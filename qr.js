@@ -5,7 +5,6 @@ const generateBtn = document.getElementById('generate');
             const eData =  document.getElementById("data");
             const width =  document.getElementById('width');
             const height =  document.getElementById('height');
-            const bgcolor =  document.getElementById('bg-color');
             const format =  document.getElementById('format');
 
 let qrimg;
@@ -15,7 +14,7 @@ const qrGen = () => {
         downloadLink.style.display = "block";
       
 
-  qrimg = "https://api.qrserver.com/v1/create-qr-code/?data=" + eData.value + "&size=" + height.value + "x" + width.value + "&format=" + format.value + "&bgcolor=" + bgcolor.value;
+  qrimg = "https://api.qrserver.com/v1/create-qr-code/?data=" + eData.value + "&size=" + height.value + "x" + width.value + "&format=" + format.value ;
 
         const imgbox = document.getElementsByClassName('imgbox')[0];
         imgbox.src = qrimg;   
