@@ -1,4 +1,4 @@
-const generateBtn = document.getElementById('generate');
+  const generateBtn = document.getElementById('generate');
     const downloadLink = document.getElementsByClassName('download')[0];
         
 
@@ -16,9 +16,11 @@ const qrGen = () => {
 
   qrimg = "https://api.qrserver.com/v1/create-qr-code/?data=" + eData.value + "&size=" + height.value + "x" + width.value + "&format=" + format.value ;
 
+
         const imgbox = document.getElementsByClassName('imgbox')[0];
         imgbox.src = qrimg;   
 
+  
       
 
         generateBtn.disabeled=true
@@ -34,17 +36,21 @@ const qrGen = () => {
       try {
         const responce = await fetch(qrimg);
         const rblob =  await responce.blob();
-      
-        const objUrl = window.URL.createObjectURL(rblob);
+      // console.log(rblob);
+        const objUrl = window.URL.createObjectURL(rblob); // used to create url  in the window using rblob(binary data)
         
-        downloadLink.href =   objUrl;
-        downloadLink.download=`qrcode.${format.value}`
+        downloadLink.href = objUrl;
+        
+        downloadLink.download = `qrcode.${format.value}`;
+        
         downloadLink.click();
+     
         window.URL.revokeObjectURL(objUrl);
         
         downloadLink.removeEventListener('click', downloadClk);
 
         location.reload();
+     
       } catch (error) {
         console.error(`THI IS THE ERROR---->   ${error}`);
       }
